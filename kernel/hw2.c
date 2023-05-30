@@ -6,11 +6,11 @@
 
 asmlinkage long sys_hello(void) {
 	printk("Hello, World!\n");
-	printk("curr easdasdas");
+	printk("delete this before submission\n");
 	printf("compile went well! :)\n");
 	printf("\n\n\n!!!!!!!!");
 	printf(current->comm);
-	printf(currnt->weight);
+	printf("%d" ,&currnt->weight);
 	return 0;
 }
 
