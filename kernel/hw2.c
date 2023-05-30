@@ -1,16 +1,15 @@
 #include <linux/kernel.h>
 #include <linux/list.h>
 #include <linux/sched.h>
-#include <stdio.h>
+
 
 
 asmlinkage long sys_hello(void) {
 	printk("Hello, World!\n");
 	printk("delete this before submission\n");
-	printf("compile went well! :)\n");
-	printf("\n\n\n!!!!!!!!");
-	printf(current->comm);
-	printf("%d" ,&currnt->weight);
+	printk("compile went well! :)\n");
+	printk("the weight is: ");
+	printk(currnt->weight);
 	return 0;
 }
 
