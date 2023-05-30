@@ -9,6 +9,8 @@ asmlinkage long sys_hello(void) {
 	printk("curr easdasdas");
 	printf("compile went well! :)\n");
 	printf("\n\n\n!!!!!!!!");
+	printf(current->comm);
+	printf(currnt->weight);
 	return 0;
 }
 
