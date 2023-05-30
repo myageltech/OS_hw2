@@ -8,7 +8,7 @@ asmlinkage long sys_hello(void) {
 	return 0;
 }
 
-asmlinkage int sys_set_weight(int weight) {
+asmlinkage long sys_set_weight(int weight) {
 	if (weight<0) return -EINVAL;
 	else{
 		return current->weight;
@@ -16,13 +16,13 @@ asmlinkage int sys_set_weight(int weight) {
 	return 0;
 }
 
-asmlinkage int sys_get_weight(void) {
+asmlinkage long sys_get_weight(void) {
 	printk("weight: %d\n", current->weight);
 	return current->weight;
 }
 
 
-asmlinkage int sys_get_ancestor_sum(void) {
+asmlinkage long sys_get_ancestor_sum(void) {
 	struct task_struct * iter = current;
 	int sum = 0;
 	while(iter->pid !=1)
