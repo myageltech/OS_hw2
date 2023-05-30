@@ -8,9 +8,6 @@ using namespace std;
 int main() {
 	//our test
 	std::cout << "===== START =====" << std::endl;
-	long r = syscall(333);
- 	std::cout << "sys_hello returned " << r << std::endl;
-	exit(0);
 	//segel test
     int x = get_weight();
 	cout << "weight: " << x << endl;

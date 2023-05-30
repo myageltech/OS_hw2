@@ -9,7 +9,8 @@ asmlinkage long sys_hello(void) {
 	printk("delete this before submission\n");
 	printk("compile went well! :)\n");
 	printk("the weight is: ");
-	printk(current->weight);
+	
+	// printk(current->weight);
 	return 0;
 }
 
