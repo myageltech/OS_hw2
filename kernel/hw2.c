@@ -43,10 +43,11 @@ struct task_struct * get_heaviest_descendant(struct task_struct * task)
 	int max = task->weight;
 	struct task_struct * iter;
 	struct list_head * list;
+	struct task_struct * temp ;
 	list_for_each(list, &task->children)
 	{
 		iter = list_entry(list, struct task_struct, sibling);
-		struct task_struct * temp = get_heaviest_descendant(iter);
+		temp = get_heaviest_descendant(iter);
 		if (temp->weight > max) {
 			max = temp->weight;
 		}
