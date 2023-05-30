@@ -1,4 +1,5 @@
 #include "hw2_test.h"
+#include <stdio.h>
 
 int set_weight(int weight) {
     long r = syscall(334, weight);
@@ -6,7 +7,9 @@ int set_weight(int weight) {
 }
 
 int get_weight() {
+    printf("get_weight\n");
     long r = syscall(335);
+    printf("get_weight: %ld\n", r);
     return r;
 }
 
