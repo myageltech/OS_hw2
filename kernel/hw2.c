@@ -1,11 +1,14 @@
 #include <linux/kernel.h>
 #include <linux/list.h>
 #include <linux/sched.h>
+#include <stdio.h>
 
 
 asmlinkage long sys_hello(void) {
 	printk("Hello, World!\n");
-	printk("curreasdasdas");
+	printk("curr easdasdas");
+	printf("compile went well! :)\n");
+	printf("\n\n\n!!!!!!!!");
 	return 0;
 }
 
