@@ -7,6 +7,7 @@ using namespace std;
 
 int main() {
 	//our test
+	std::cout << "===== START =====" << std::endl;
 	long r = syscall(333);
  	std::cout << "sys_hello returned " << r << std::endl;
 	//segel test
