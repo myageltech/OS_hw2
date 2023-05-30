@@ -5,7 +5,7 @@
 
 asmlinkage long sys_hello(void) {
 	printk("Hello, World!\n");
-	printk("current weight: %d\n", current->weight);
+	printk("curreasdasdas");
 	return 0;
 }
 

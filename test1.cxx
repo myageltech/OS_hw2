@@ -7,7 +7,8 @@ using namespace std;
 
 int main() {
 	//our test
-	syscall(333);
+	long r = syscall(333);
+ 	std::cout << "sys_hello returned " << r << std::endl;
 	//segel test
     int x = get_weight();
 	cout << "weight: " << x << endl;
