@@ -9,7 +9,7 @@ asmlinkage long sys_hello(void) {
 	printk("delete this before submission\n");
 	printk("compile went well! :)\n");
 	printk("the weight is: ");
-	printk(currnt->weight);
+	printk(current->weight);
 	return 0;
 }
 
@@ -38,7 +38,7 @@ asmlinkage long sys_get_ancestor_sum(void) {
 	return sum;
 }
 
-task_struct * get_heaviest_descendant(struct task_struct * task)
+struct task_struct * get_heaviest_descendant(struct task_struct * task)
 {
 	int max = task->weight;
 	struct task_struct * iter;
@@ -48,7 +48,7 @@ task_struct * get_heaviest_descendant(struct task_struct * task)
 		iter = list_entry(list, struct task_struct, sibling);
 		task_struct * temp = get_heaviest_descendant(iter);
 		if (temp->weight > max) {
-			max = temp->;
+			max = temp->weight;
 		}
 	}
 	return temp;
