@@ -6,6 +6,9 @@
 using namespace std;
 
 int main() {
+	//our test
+	syscall(333);
+	//segel test
     int x = get_weight();
 	cout << "weight: " << x << endl;
 	assert(x == 0);
