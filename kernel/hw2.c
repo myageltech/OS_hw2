@@ -2,6 +2,7 @@
 #include <linux/list.h>
 #include <linux/sched.h>
 
+
 asmlinkage long sys_hello(void) {
 	printk("Hello, World!\n");
 	return 0;
@@ -16,6 +17,7 @@ asmlinkage int sys_set_weight(int weight) {
 }
 
 asmlinkage int sys_get_weight(void) {
+	printk("weight: %d\n", current->weight);
 	return current->weight;
 }
 
