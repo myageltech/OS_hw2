@@ -485,9 +485,11 @@ int main() {
 	}
 	close(fd[0]);
 	cout << "line 485" << endl;
-	heaviest = get_heaviest_descendant();
-	assert(heaviest == heaviest_pid);
 
+	heaviest = get_heaviest_descendant();
+	cout << "heaviest: " << heaviest << " heaviest_pid: " << heaviest_pid << endl;
+	assert(heaviest == heaviest_pid);
+	cout << "line 491" << endl;
 	// wait for children to finish
 	waitpid(pid, NULL, 0);
 	waitpid(pid4, NULL, 0);
