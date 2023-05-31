@@ -153,6 +153,7 @@ int main() {
 	sleep(1);
 	cout << "line 155" << endl;
 	pid_t heaviest = get_heaviest_descendant();
+	cout << "haeviest: " << heaviest << endl; // should be pid3
 	cout << "line 157" << endl;
 	assert(heaviest == pid3);
 	cout << "line 159" << endl;	
@@ -229,6 +230,7 @@ int main() {
 	}
 	close(fd[0]);
 	heaviest = get_heaviest_descendant();
+	cout << "haviest: " << heaviest << "haeviest_pid: " << heaviest_pid << endl; // should be pid2
 	assert(heaviest == heaviest_pid);
 
 	// wait for children to finish
