@@ -221,7 +221,7 @@ int main() {
 	assert(x == 0);
 
 	// wait for children to set weight
-	sleep(1);
+	sleep(10);
 	pid_t heaviest_pid;
 	close(fd[1]);
 	if (read(fd[0], &heaviest_pid, sizeof(heaviest_pid)) == -1) {
