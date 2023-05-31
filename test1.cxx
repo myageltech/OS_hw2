@@ -127,6 +127,7 @@ int main() {
 		// Child1
 		x = set_weight(10);
 		assert(x == 0);
+		cout << "line 130" << endl;
 		exit(0);
 	}
 
@@ -135,6 +136,8 @@ int main() {
 		// Child2
 		x = set_weight(20);
 		assert(x == 0);
+				cout << "line 139" << endl;
+
 		exit(0);
 	}
 
@@ -143,6 +146,8 @@ int main() {
 		// Child3
 		x = set_weight(30);
 		assert(x == 0);
+				cout << "line 149" << endl;
+
 		exit(0);
 	}
 
@@ -161,6 +166,8 @@ int main() {
 	int fd[2];
 	if(pipe(fd) == -1) {
 		perror("pipe");
+				cout << "line 170" << endl;
+
 		exit(1);
 	}
 
@@ -186,13 +193,16 @@ int main() {
 				// Great Grandchild1
 				x = set_weight(20);
 				assert(x == 0);
+				cout << "line 196" << endl;
 				exit(0);
 			} else {
 				// Grandchild1
 				sleep(2);
 				waitpid(pid3, NULL, 0);
+				cout << "line 202" << endl;
 				exit(0);
 			}
+			cout << "line 205" << endl;
 			exit(0);
 		} else {
 			// Child1
@@ -200,6 +210,7 @@ int main() {
 			close(fd[1]);
 			sleep(2);
 			waitpid(pid2, NULL, 0);
+			cout << "line 213" << endl;
 			exit(0);
 		}
 	} 
@@ -248,18 +259,22 @@ int main() {
 				// Great Grandchild1
 				x = set_weight(20);
 				assert(get_weight() == 20);
+				cout << "line 262" << endl;
 				exit(0);
 			} else {
 				// Grandchild1
 				sleep(2);
 				waitpid(pid3, NULL, 0);
+				cout << "line 268" << endl;
 				exit(0);
 			}
+			cout << "line 271" << endl;
 			exit(0);
 		} else {
 			// Child1
 			sleep(2);
 			waitpid(pid2, NULL, 0);
+			cout << "line 277" << endl;
 			exit(0);
 		}
 	}
@@ -276,11 +291,13 @@ int main() {
 			// Grandchild2
 			x = set_weight(60);
 			assert(get_weight() == 60);
+			cout << "line 294" << endl;
 			exit(0);
 		} else {
 			// Child2
 			sleep(2);
 			waitpid(pid5, NULL, 0);
+			cout << "line 300" << endl;
 			exit(0);
 		}
 	}
@@ -307,14 +324,16 @@ int main() {
 					// Great Great Grandchild3
 					x = set_weight(100);
 					assert(get_weight() == 100);
+					cout << "line 327" << endl;
 					exit(0);
 				} else {
 					// Great Grandchild3
 					sleep(2);
 					waitpid(pid9, NULL, 0);
+					cout << "line 333" << endl;
 					exit(0);
 				}
-
+				cout << "line 336" << endl;
 				exit(0);
 			} else {
 				pid_t pid10 = fork();
@@ -322,12 +341,14 @@ int main() {
 					// Great Grandchild3.1
 					x = set_weight(110);
 					assert(x == 0);
+					cout << "line 344" << endl;
 					exit(0);
 				} else {
 					// Grandchild3
 					sleep(2);
 					waitpid(pid10, NULL, 0);
 					waitpid(pid8, NULL, 0);
+					cout << "line 351" << endl;
 					exit(0);
 				}
 			}
@@ -344,7 +365,7 @@ int main() {
 					exit(1);
 				}
 				close(fd[1]);
-
+				cout << "line 368" << endl;
 				exit(0);
 			} else {
 				// Child3
@@ -352,6 +373,7 @@ int main() {
 				sleep(2);
 				waitpid(pid11, NULL, 0);
 				waitpid(pid7, NULL, 0);
+				cout << "line 376" << endl;
 				exit(0);
 			}
 		}
@@ -404,20 +426,24 @@ int main() {
 				}
 				close(fd[1]);
 				assert(get_weight() == 80);
+				cout << "line 429" << endl;
 				exit(0);
 			} else {
 				// Grandchild1
 				close(fd[1]);
 				sleep(2);
 				waitpid(pid3, NULL, 0);
+				cout << "line 436" << endl;
 				exit(0);
 			}
+			cout << "line 439" << endl;
 			exit(0);
 		} else {
 			// Child1
 			close(fd[1]);
 			sleep(2);
 			waitpid(pid2, NULL, 0);
+			cout << "line 446" << endl;
 			exit(0);
 		}
 	}
@@ -435,11 +461,13 @@ int main() {
 			// Grandchild2
 			x = set_weight(60);
 			assert(get_weight() == 60);
+			cout << "line 464" << endl;
 			exit(0);
 		} else {
 			// Child2
 			sleep(2);
 			waitpid(pid2, NULL, 0);
+			cout << "line 470" << endl;
 			exit(0);
 		}
 	}
