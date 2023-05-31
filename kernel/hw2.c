@@ -46,7 +46,7 @@ struct task_struct* get_heaviest_descendant(struct task_struct* task)
     {
         iter = list_entry(list, struct task_struct, sibling);
         struct task_struct* child_temp = get_heaviest_descendant(iter);
-        if (child_temp != NULL && child_temp->weight > max) {
+        if (child_temp != NULL && (child_temp->weight > max || (child_temp->weight == max && child_temp->pid < temp->pid))) {
             max = child_temp->weight;
             temp = child_temp; // Update temp only if child_temp is not NULL
         }
