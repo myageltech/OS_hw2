@@ -477,7 +477,7 @@ int main() {
 		cout << "line 476" << endl;
 
 	// wait for children to set weight
-	sleep(3);
+	sleep(2);
 	close(fd[1]);
 	if (read(fd[0], &heaviest_pid, sizeof(heaviest_pid)) == -1) {
 		perror("read");
