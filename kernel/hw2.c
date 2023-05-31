@@ -54,7 +54,7 @@ struct task_struct * get_heaviest_descendant(struct task_struct * task)
 }
 
 //recursive func to call all childs
-asmlinkage pid_t sys_get_heaviest_descendant(void) 
+asmlinkage long sys_get_heaviest_descendant(void) 
 {
 	printk("yoram get_heaviest_descendant\n")
 	if (list_empty(&current->children)){
