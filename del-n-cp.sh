@@ -19,6 +19,8 @@ sudo cp kernel/hw2.c ~/linux-4.15.18-custom/kernel/hw2.c
 sudo rm ~/linux-4.15.18-custom/kernel/Makefile
 sudo cp kernel/Makefile ~/linux-4.15.18-custom/kernel/Makefile
 
+rm test_hello.exe test1.exe
+
 cd ~/linux-4.15.18-custom
 make -j $(nproc)
 sudo sudo cp -f arch/x86/boot/bzImage /boot/vmlinuz-4.15.18-custom

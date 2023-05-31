@@ -6,18 +6,15 @@
 
 asmlinkage long sys_hello(void) {
 	printk("Hello, World!\n");
-	printk("delete this before submission\n");
-	printk("compile went well! :)\n");
-	printk("the weight is: ");
-	
-	// printk(current->weight);
 	return 0;
 }
 
 asmlinkage long sys_set_weight(int weight) {
-	if (weight<0) return -EINVAL;
+	if (weight>=0){
+		current->weight = weight;
+	} 
 	else{
-		return current->weight;
+		return -EINVAL;
 	}
 	return 0;
 }
