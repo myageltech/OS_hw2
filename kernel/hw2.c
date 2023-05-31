@@ -36,22 +36,27 @@ asmlinkage long sys_get_ancestor_sum(void) {
 	return sum;
 }
 
-struct task_struct * get_heaviest_descendant(struct task_struct * task)
+struct task_struct* get_heaviest_descendant(struct task_struct* task)
 {
-	int max = task->weight;
-	struct task_struct * iter;
-	struct list_head * list;
-	struct task_struct * temp ;
-	list_for_each(list, &task->children)
-	{
-		iter = list_entry(list, struct task_struct, sibling);
-		temp = get_heaviest_descendant(iter);
-		if (temp->weight > max) {
-			max = temp->weight;
-		}
-	}
-	return temp;
+    int max = task->weight;
+    struct task_struct* iter;
+    struct list_head* list;
+    struct task_struct* temp = NULL; // Initialize temp to NULL
+    list_for_each(list, &task->children)
+    {
+        iter = list_entry(list, struct task_struct, sibling);
+        struct task_struct* child_temp = get_heaviest_descendant(iter);
+        if (child_temp != NULL && child_temp->weight > max) {
+            max = child_temp->weight;
+            temp = child_temp; // Update temp only if child_temp is not NULL
+        }
+    }
+    if (temp == NULL) {
+        temp = task; // Set temp to current task if no heavier descendant is found
+    }
+    return temp;
 }
+
 
 //recursive func to call all childs
 asmlinkage long sys_get_heaviest_descendant(void) 
@@ -64,7 +69,7 @@ asmlinkage long sys_get_heaviest_descendant(void)
 	else
 	{
 		printk("yoram has child\n");
-		return get_heaviest_descendant(current)->pid;
+		return (get_heaviest_descendant(current))->pid;
 	}
 	
 }
