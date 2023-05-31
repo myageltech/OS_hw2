@@ -136,8 +136,7 @@ int main() {
 		// Child2
 		x = set_weight(20);
 		assert(x == 0);
-				cout << "line 139" << endl;
-
+		cout << "line 139" << endl;
 		exit(0);
 	}
 
@@ -146,16 +145,17 @@ int main() {
 		// Child3
 		x = set_weight(30);
 		assert(x == 0);
-				cout << "line 149" << endl;
-
+		cout << "line 149" << endl;
 		exit(0);
 	}
-
+	cout << "line 152" << endl;
 	// wait for children to set weight
 	sleep(1);
+	cout << "line 155" << endl;
 	pid_t heaviest = get_heaviest_descendant();
+	cout << "line 157" << endl;
 	assert(heaviest == pid3);
-
+	cout << "line 159" << endl;	
 	waitpid(pid, NULL, 0);
 	waitpid(pid2, NULL, 0);
 	waitpid(pid3, NULL, 0);
