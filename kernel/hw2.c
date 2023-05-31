@@ -36,7 +36,7 @@ asmlinkage long sys_get_ancestor_sum(void) {
 	return sum;
 }
 
-struct task_struct* get_heaviest_descendant(struct task_struct* task, bool is_first_call=true)
+struct task_struct* get_heaviest_descendant(struct task_struct* task, bool is_first_call)
 {
 	int max = 0;
 	if (!is_first_call)
@@ -49,7 +49,7 @@ struct task_struct* get_heaviest_descendant(struct task_struct* task, bool is_fi
     list_for_each(list, &task->children)
     {
         iter = list_entry(list, struct task_struct, sibling);
-        struct task_struct* child_temp = get_heaviest_descendant(iter);
+        struct task_struct* child_temp = get_heaviest_descendant(iter, false);
         if (child_temp != NULL && (child_temp->weight > max || (child_temp->weight == max && child_temp->pid < temp->pid))) {
             max = child_temp->weight;
             temp = child_temp; // Update temp only if child_temp is not NULL
@@ -73,7 +73,7 @@ asmlinkage long sys_get_heaviest_descendant(void)
 	else
 	{
 		printk("yoram has child\n");
-		return (get_heaviest_descendant(current))->pid;
+		return (get_heaviest_descendant(current, true))->pid;
 	}
 	
 }
