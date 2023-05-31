@@ -36,9 +36,13 @@ asmlinkage long sys_get_ancestor_sum(void) {
 	return sum;
 }
 
-struct task_struct* get_heaviest_descendant(struct task_struct* task)
+struct task_struct* get_heaviest_descendant(struct task_struct* task, bool is_first_call=true)
 {
-    int max = task->weight;
+	int max = 0;
+	if (!is_first_call)
+	{
+		max = task->weight;
+	}
     struct task_struct* iter;
     struct list_head* list;
     struct task_struct* temp = NULL; // Initialize temp to NULL
