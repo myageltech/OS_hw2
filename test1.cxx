@@ -449,6 +449,7 @@ int main() {
 			exit(0);
 		}
 	}
+		cout << "line 452" << endl;
 
 	pid4 = fork();
 
@@ -473,6 +474,7 @@ int main() {
 			exit(0);
 		}
 	}
+		cout << "line 476" << endl;
 
 	// wait for children to set weight
 	sleep(1);
@@ -482,6 +484,7 @@ int main() {
 		exit(1);
 	}
 	close(fd[0]);
+	cout << "line 485" << endl;
 	heaviest = get_heaviest_descendant();
 	assert(heaviest == heaviest_pid);
 
