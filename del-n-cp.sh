@@ -1,7 +1,7 @@
 #!/bin/bash
 
 rm ~/linux-4.15.18-custom/arch/x86/entry/syscalls/syscall_64.tbl
-cp arc/x86/entry/syscalls/syscall_64.tbl ~/linux-4.15.18-custom/arc/x86/entry/syscalls/syscall_64.tbl
+cp arch/x86/entry/syscalls/syscall_64.tbl ~/linux-4.15.18-custom/arch/x86/entry/syscalls/syscall_64.tbl
 
 rm ~/linux-4.15.18-custom/include/linux/syscalls.h 
 cp include/linux/syscalls.h ~/linux-4.15.18-custom/include/linux/syscalls.h
