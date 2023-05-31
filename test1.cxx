@@ -221,7 +221,7 @@ int main() {
 	assert(x == 0);
 
 	// wait for children to set weight
-	sleep(10);
+	sleep(1);
 	pid_t heaviest_pid;
 	close(fd[1]);
 	if (read(fd[0], &heaviest_pid, sizeof(heaviest_pid)) == -1) {
@@ -477,7 +477,7 @@ int main() {
 		cout << "line 476" << endl;
 
 	// wait for children to set weight
-	sleep(1);
+	sleep(10);
 	close(fd[1]);
 	if (read(fd[0], &heaviest_pid, sizeof(heaviest_pid)) == -1) {
 		perror("read");
