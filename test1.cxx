@@ -20,98 +20,98 @@ int main() {
 	
 	cout << "===== PASSED SEGEL TESTS =====" << endl;
 
-	// // Test negative weight
-	// x = set_weight(-10);
-	// assert(x == -1);
-	// x = get_weight();
-	// assert(x == 5);
+	// Test negative weight
+	x = set_weight(-10);
+	assert(x == -1);
+	x = get_weight();
+	assert(x == 5);
 
-	// cout << "===== PASSED NEGATIVE WEIGHT =====" << endl;
+	cout << "===== PASSED NEGATIVE WEIGHT =====" << endl;
 
-	// // Test fork copy works
-	// pid_t pid = fork();
-	// if (pid == 0) {
-	// 	// Child
-	// 	x = get_weight();
-	// 	assert(x == 5);
-	// 	x = set_weight(-10);
-	// 	assert(x == -1);
-	// 	exit(0);
-	// }
-	// else {
-	// 	// Parent
-	// 	wait(NULL);
-	// }
-	// x = get_weight();
-	// assert(x == 5);
+	// Test fork copy works
+	pid_t pid = fork();
+	if (pid == 0) {
+		// Child
+		x = get_weight();
+		assert(x == 5);
+		x = set_weight(-10);
+		assert(x == -1);
+		exit(0);
+	}
+	else {
+		// Parent
+		wait(NULL);
+	}
+	x = get_weight();
+	assert(x == 5);
 
-	// cout << "===== PASSED FORK TEST =====" << endl;
+	cout << "===== PASSED FORK TEST =====" << endl;
 
-	// // Test get_ancestor_sum
+	// Test get_ancestor_sum
 
-	// // Test all ancestors have weight 0
-	// x = get_ancestor_sum();
-	// assert(x == 5);
+	// Test all ancestors have weight 0
+	x = get_ancestor_sum();
+	assert(x == 5);
 
-	// // Test with one child
+	// Test with one child
 
-	// pid = fork();
-	// if (pid == 0) {
-	// 	// Child
-	// 	x = get_ancestor_sum();
-	// 	assert(x == 10);
-	// 	exit(0);
-	// } else {
-	// 	// Parent
-	// 	wait(NULL);
-	// }
+	pid = fork();
+	if (pid == 0) {
+		// Child
+		x = get_ancestor_sum();
+		assert(x == 10);
+		exit(0);
+	} else {
+		// Parent
+		wait(NULL);
+	}
 
-	// // Test with more descendants
-	// x = get_ancestor_sum();
-	// assert(x == 5);
+	// Test with more descendants
+	x = get_ancestor_sum();
+	assert(x == 5);
 
-	// pid = fork();
-	// if (pid == 0) {
-	// 	// Child
-	// 	x = get_ancestor_sum();
-	// 	assert(x == 10);
-	// 	x = set_weight(10);
-	// 	assert(x == 0);
+	pid = fork();
+	if (pid == 0) {
+		// Child
+		x = get_ancestor_sum();
+		assert(x == 10);
+		x = set_weight(10);
+		assert(x == 0);
 		
-	// 	pid_t pid2 = fork();
-	// 	if (pid2 == 0) {
-	// 		// Grandchild
-	// 		x = get_ancestor_sum();
-	// 		assert(x == 25);
-	// 		x = set_weight(15);
-	// 		assert(x == 0);
-	// 		x = get_ancestor_sum();
-	// 		assert(x == 30);
+		pid_t pid2 = fork();
+		if (pid2 == 0) {
+			// Grandchild
+			x = get_ancestor_sum();
+			assert(x == 25);
+			x = set_weight(15);
+			assert(x == 0);
+			x = get_ancestor_sum();
+			assert(x == 30);
 
-	// 		pid_t pid3 = fork();
-	// 		if (pid3 == 0) {
-	// 			// Great Grandchild
-	// 			x = get_ancestor_sum();
-	// 			assert(x == 45);
-	// 			exit(0);
-	// 		} else {
-	// 			// Grandchild
-	// 			waitpid(pid3, NULL, 0);
-	// 			exit(0);
-	// 		}
-	// 	} else {
-	// 		// Child
-	// 		waitpid(pid2, NULL, 0);
-	// 		exit(0);
-	// 	} 
-	// } else {
-	// 	// Parent
-	// 	waitpid(pid, NULL, 0);
-	// }
-	// x = get_ancestor_sum();
-	// assert(x == 5);
+			pid_t pid3 = fork();
+			if (pid3 == 0) {
+				// Great Grandchild
+				x = get_ancestor_sum();
+				assert(x == 45);
+				exit(0);
+			} else {
+				// Grandchild
+				waitpid(pid3, NULL, 0);
+				exit(0);
+			}
+		} else {
+			// Child
+			waitpid(pid2, NULL, 0);
+			exit(0);
+		} 
+	} else {
+		// Parent
+		waitpid(pid, NULL, 0);
+	}
+	x = get_ancestor_sum();
+	assert(x == 5);
 
-	// cout << "===== PASSED ANCESTOR SUM TEST =====" << endl;
+	cout << "===== PASSED ANCESTOR SUM TEST =====" << endl;
 
 
 	// Test get_heaviest_descendant
@@ -122,8 +122,8 @@ int main() {
 
 	// Test one layer of descendants
 
-	pid_t pid = fork();
-	// pid = fork();
+	// pid_t pid = fork();
+	pid = fork();
 	if (pid == 0) {
 		// Child1
 		x = set_weight(10);
