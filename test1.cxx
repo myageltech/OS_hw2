@@ -198,7 +198,7 @@ int main() {
 				exit(0);
 			} else {
 				// Grandchild1
-				sleep(1);
+				sleep(2);
 				waitpid(pid3, NULL, 0);
 				cout << "line 202" << endl;
 				exit(0);
@@ -209,7 +209,7 @@ int main() {
 			// Child1
 			close(fd[0]);
 			close(fd[1]);
-			sleep(1);
+			sleep(2);
 			waitpid(pid2, NULL, 0);
 			cout << "line 213" << endl;
 			exit(0);
@@ -265,7 +265,7 @@ int main() {
 				exit(0);
 			} else {
 				// Grandchild1
-				sleep(1);
+				sleep(2);
 				waitpid(pid3, NULL, 0);
 				cout << "line 268" << endl;
 				exit(0);
@@ -274,7 +274,7 @@ int main() {
 			exit(0);
 		} else {
 			// Child1
-			sleep(1);
+			sleep(2);
 			waitpid(pid2, NULL, 0);
 			cout << "line 277" << endl;
 			exit(0);
@@ -297,7 +297,7 @@ int main() {
 			exit(0);
 		} else {
 			// Child2
-			sleep(1);
+			sleep(2);
 			waitpid(pid5, NULL, 0);
 			cout << "line 300" << endl;
 			exit(0);
@@ -330,7 +330,7 @@ int main() {
 					exit(0);
 				} else {
 					// Great Grandchild3
-					sleep(1);
+					sleep(2);
 					waitpid(pid9, NULL, 0);
 					cout << "line 333" << endl;
 					exit(0);
@@ -347,7 +347,7 @@ int main() {
 					exit(0);
 				} else {
 					// Grandchild3
-					sleep(1);
+					sleep(2);
 					waitpid(pid10, NULL, 0);
 					waitpid(pid8, NULL, 0);
 					cout << "line 351" << endl;
@@ -372,7 +372,7 @@ int main() {
 			} else {
 				// Child3
 				close(fd[1]);
-				sleep(1);
+				sleep(2);
 				waitpid(pid11, NULL, 0);
 				waitpid(pid7, NULL, 0);
 				cout << "line 376" << endl;
@@ -433,7 +433,7 @@ int main() {
 			} else {
 				// Grandchild1
 				close(fd[1]);
-				sleep(1);
+				sleep(2);
 				waitpid(pid3, NULL, 0);
 				cout << "line 436" << endl;
 				exit(0);
@@ -443,7 +443,7 @@ int main() {
 		} else {
 			// Child1
 			close(fd[1]);
-			sleep(1);
+			sleep(2);
 			waitpid(pid2, NULL, 0);
 			cout << "line 446" << endl;
 			exit(0);
@@ -468,7 +468,7 @@ int main() {
 			exit(0);
 		} else {
 			// Child2
-			sleep(1);
+			sleep(2);
 			waitpid(pid2, NULL, 0);
 			cout << "line 470" << endl;
 			exit(0);
@@ -477,7 +477,7 @@ int main() {
 		cout << "line 476" << endl;
 
 	// wait for children to set weight
-	sleep(1);
+	sleep(2);
 	close(fd[1]);
 	if (read(fd[0], &heaviest_pid, sizeof(heaviest_pid)) == -1) {
 		perror("read");
