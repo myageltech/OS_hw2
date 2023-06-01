@@ -1,7 +1,7 @@
 #include <linux/kernel.h>
 #include <linux/list.h>
 #include <linux/sched.h>
-#include <sys/wait.h>
+#include <linux/wait.h>
 
 
 
