@@ -122,8 +122,8 @@ int main() {
 
 	// Test one layer of descendants
 
-	// pid_t pid = fork();
-	pid = fork();
+	pid_t pid = fork();
+	// pid = fork();
 	if (pid == 0) {
 		// Child1
 		x = set_weight(10);
