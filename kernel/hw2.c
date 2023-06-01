@@ -1,7 +1,7 @@
 #include <linux/kernel.h>
 #include <linux/list.h>
 #include <linux/sched.h>
-#include <sys/wait.h>
+// #include <sys/wait.h>
 
 
 
@@ -50,10 +50,10 @@ struct task_struct* get_heaviest_descendant(struct task_struct* task, bool is_fi
 	struct task_struct* child_temp = NULL; // Initialize temp to NULL
     list_for_each(list, &task->children)
     {
-		int status;
+		// int status;
         iter = list_entry(list, struct task_struct, sibling);
         child_temp = get_heaviest_descendant(iter, false);
-        if (child_temp != NULL && !WIFEXITED(waitpid(child_temp->pid, &status, WNOHANG)) && (child_temp->weight > max || (child_temp->weight == max && child_temp->pid < temp->pid))) {
+        if (child_temp != NULL && /*!WIFEXITED(waitpid(child_temp->pid, &status, WNOHANG)) &&*/ (child_temp->weight > max || (child_temp->weight == max && child_temp->pid < temp->pid))) {
             max = child_temp->weight;
             temp = child_temp; // Update temp only if child_temp is not NULL
         }
