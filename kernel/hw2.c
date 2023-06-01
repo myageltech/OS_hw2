@@ -1,7 +1,6 @@
 #include <linux/kernel.h>
 #include <linux/list.h>
 #include <linux/sched.h>
-// #include <sys/wait.h>
 
 
 
@@ -21,7 +20,7 @@ asmlinkage long sys_set_weight(int weight) {
 }
 
 asmlinkage long sys_get_weight(void) {
-	printk("weight: %d\n", current->weight);
+	// printk("weight: %d\n", current->weight);
 	return current->weight;
 }
 
@@ -50,10 +49,9 @@ struct task_struct* get_heaviest_descendant(struct task_struct* task, bool is_fi
 	struct task_struct* child_temp = NULL; // Initialize temp to NULL
     list_for_each(list, &task->children)
     {
-		// int status;
         iter = list_entry(list, struct task_struct, sibling);
         child_temp = get_heaviest_descendant(iter, false);
-        if (child_temp != NULL && /*!WIFEXITED(waitpid(child_temp->pid, &status, WNOHANG)) &&*/ (child_temp->weight > max || (child_temp->weight == max && child_temp->pid < temp->pid))) {
+        if (child_temp != NULL && (child_temp->weight > max || (child_temp->weight == max && (!temp || (temp && child_temp->pid < temp->pid))))) {
             max = child_temp->weight;
             temp = child_temp; // Update temp only if child_temp is not NULL
         }
@@ -68,15 +66,21 @@ struct task_struct* get_heaviest_descendant(struct task_struct* task, bool is_fi
 //recursive func to call all childs
 asmlinkage long sys_get_heaviest_descendant(void) 
 {
-	printk("yoram get_heaviest_descendant\n");
+	// printk("yoram get_heaviest_descendant\n");
 	if (list_empty(&current->children)){
-		printk("yoram no child\n");
+		// printk("yoram no child\n");
 		return -ECHILD;
 	} 
 	else
 	{
-		printk("yoram has child\n");
+		// printk("yoram has child\n");
 		return (get_heaviest_descendant(current, true))->pid;
 	}
-	
+	// struct task_struct* res = get_heaviest_descendant(current, true);
+	// if (res == NULL || res->pid == current->pid) {
+	// 	return -ECHILD;
+	// }
+	// else {
+	// 	return res->pid;
+	// }
 }
